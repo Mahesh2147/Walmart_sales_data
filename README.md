@@ -69,13 +69,13 @@ data.to_csv("Walmart_Clean_Data.csv")
 
 # Schemas
 
-1. First Create DATABASE
+### 1. First Create DATABASE
 ```
 create database Walmart_data;
 use Walmart_data;
 ```
 
-2. Create Table
+### 2. Create Table
 ```
 create table walmart_sale_analysis
 (
@@ -94,12 +94,12 @@ create table walmart_sale_analysis
 );
 ```
 
-3. Total records in data
+### 3. Total records in data
 ```
 select count(*) from walmart_sale_analysis;
 ```
 
-4. Find count of payment_methods
+### 4. Find count of payment_methods
 ```
 select 
 	distinct payment_method ,
@@ -108,14 +108,14 @@ select
     group by payment_method;
 ```
  
-5. find the count of branch
+### 5. find the count of branch
 ```
 select 
 	count(distinct branch) 
 from walmart_sale_analysis;
 ```
 
-6. Find Max and Min of quantity 
+### 6. Find Max and Min of quantity 
 ```
 select max(quantity) from walmart_sale_analysis;
 select min(quantity) from walmart_sale_analysis;
@@ -123,7 +123,7 @@ select min(quantity) from walmart_sale_analysis;
 
 # Key Business Questions & SQL Queries
 
-1. Payment Method Analysis
+### 1. Payment Method Analysis
 ```
 SELECT 
     payment_method,
@@ -135,7 +135,7 @@ GROUP BY payment_method;
    * Identifies different payment methods used.
    * Counts total transactions and total quantity sold per method.
  
-2. Highest-Rated Product Category in Each Branch
+### 2. Highest-Rated Product Category in Each Branch
 ```
 SELECT * 
 FROM (
@@ -152,7 +152,7 @@ WHERE ranks = 1;
    * Finds the most popular product category per store branch based on customer ratings.
    * Uses window functions (RANK) to rank categories per branch.
 
-3. Busiest Shopping Days by Branch
+### 3. Busiest Shopping Days by Branch
 ```
 SELECT * 
 FROM (
