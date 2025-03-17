@@ -9,14 +9,14 @@
 import pandas as pd
 data = pd.read_csv("Walmart.csv", encoding_errors='ignore')
 ```
-  * Loads the Walmart.csv dataset using Pandas.
+   Loads the Walmart.csv dataset using Pandas.
 
 * 2.Initial Exploration
 ```
 data.describe()
 data.info()
 ```
-  * Checks summary statistics and data types.
+   Checks summary statistics and data types.
 
 # Data Cleaning Steps in the Notebook
 
@@ -26,7 +26,7 @@ data.duplicated().sum()
 data.drop_duplicates(inplace=True)
 data.duplicated().sum()
 ```
-  * Checks for duplicate rows and removes them.
+   Checks for duplicate rows and removes them.
 
 * 2.Handling Missing Values
 ```
@@ -34,13 +34,13 @@ data.isnull().sum()
 data.dropna(inplace=True)
 data.isnull().sum()
 ```
-  * Identifies missing values and drops them.
+   Identifies missing values and drops them.
 
 * 3.Data Type Conversion
 ```
 data['unit_price'] = data['unit_price'].str.replace('$', '').astype(float)
 ```
-  * Converts unit_price from string (with dollar signs) to float for numerical analysis.
+   Converts unit_price from string (with dollar signs) to float for numerical analysis.
 
 # Additional Data Transformations
 
@@ -48,15 +48,15 @@ data['unit_price'] = data['unit_price'].str.replace('$', '').astype(float)
 ```
 data['total_price'] = data['unit_price'] * data['quantity']
 ````
-  * Adds a total price column by multiplying unit price with quantity.
+   Adds a total price column by multiplying unit price with quantity.
 
 * 2.Exporting the Cleaned Data
 ```
 data.to_csv("Walmart_Clean_Data.csv")
 ```
-  * Saves the cleaned dataset as a new CSV file.
+   Saves the cleaned dataset as a new CSV file.
 
-Summary of Walmart Data Cleaning Notebook
+# Summary of Walmart Data Cleaning Notebook
 ✅ Operations Performed:
 
 * Loaded Walmart sales data.
