@@ -1,4 +1,4 @@
-# Walmart_sales_data
+# Walmart_sales_data -- SQL Project
 
 **Dataset Link:** https://www.kaggle.com/datasets/najir0123/walmart-10k-sales-datasets
 
