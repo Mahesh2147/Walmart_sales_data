@@ -9,7 +9,7 @@
 import pandas as pd
 data = pd.read_csv("Walmart.csv", encoding_errors='ignore')
 ```
-   ** Loads the Walmart.csv dataset using Pandas.
+   & Loads the Walmart.csv dataset using Pandas.
 
 * 2. Initial Exploration
 ```
