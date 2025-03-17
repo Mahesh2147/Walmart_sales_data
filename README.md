@@ -2,61 +2,62 @@
 
 **Dataset Link:** https://www.kaggle.com/datasets/najir0123/walmart-10k-sales-datasets
 
+
 ###  Key Operations in the Walmart Data Cleaning Notebook
 
-* 1. Data Loading
+* Data Loading
 ```
+# Loads the Walmart.csv dataset using Pandas.
 import pandas as pd
 data = pd.read_csv("Walmart.csv", encoding_errors='ignore')
-```
-   & Loads the Walmart.csv dataset using Pandas.
 
-* 2. Initial Exploration
 ```
+*  Initial Exploration
+```
+# Checks summary statistics and data types.
 data.describe()
 data.info()
 ```
-   ** Checks summary statistics and data types.
+  
+### Data Cleaning Steps in the Notebook
 
-# Data Cleaning Steps in the Notebook
-
-* 1. Removing Duplicates
+*  Removing Duplicates
 ```
+# Checks for duplicate rows and removes them.
 data.duplicated().sum()
 data.drop_duplicates(inplace=True)
 data.duplicated().sum()
 ```
-   ** Checks for duplicate rows and removes them.
 
-* 2. Handling Missing Values
+*  Handling Missing Values
 ```
+#Identifies missing values and drops them.
 data.isnull().sum()
 data.dropna(inplace=True)
 data.isnull().sum()
 ```
-   ** Identifies missing values and drops them.
 
-* 3. Data Type Conversion
+*  Data Type Conversion
 ```
+#Converts unit_price from string (with dollar signs) to float for numerical analysis.
 data['unit_price'] = data['unit_price'].str.replace('$', '').astype(float)
 ```
-   ** Converts unit_price from string (with dollar signs) to float for numerical analysis.
 
-# Additional Data Transformations
+### Additional Data Transformations
 
-* 1. Creating a New Feature (total_price)
+*  Creating a New Feature (total_price)
 ```
+# Adds a total price column by multiplying unit price with quantity.
 data['total_price'] = data['unit_price'] * data['quantity']
 ````
-   ** Adds a total price column by multiplying unit price with quantity.
 
-* 2. Exporting the Cleaned Data
+*  Exporting the Cleaned Data
 ```
+# Saves the cleaned dataset as a new CSV file.
 data.to_csv("Walmart_Clean_Data.csv")
 ```
-   ** Saves the cleaned dataset as a new CSV file.
 
-# Summary of Walmart Data Cleaning Notebook
+### Summary of Walmart Data Cleaning Notebook
 ✅ Operations Performed:
 
 * Loaded Walmart sales data.
@@ -67,12 +68,14 @@ data.to_csv("Walmart_Clean_Data.csv")
 * Saved the cleaned dataset for further use.
 
 # Schemas
--- First Create DATABASE
+
+1. First Create DATABASE
 ```
 create database Walmart_data;
 use Walmart_data;
 ```
--- Create Table
+
+2. Create Table
 ```
 create table walmart_sale_analysis
 (
@@ -91,12 +94,12 @@ create table walmart_sale_analysis
 );
 ```
 
--- Total records in data
+3. Total records in data
 ```
 select count(*) from walmart_sale_analysis;
 ```
 
--- Find count of payment_methods
+4. Find count of payment_methods
 ```
 select 
 	distinct payment_method ,
@@ -105,20 +108,21 @@ select
     group by payment_method;
 ```
  
--- find the count of branch
+5. find the count of branch
 ```
 select 
 	count(distinct branch) 
 from walmart_sale_analysis;
 ```
 
--- Find Max and Min of quantity 
+6. Find Max and Min of quantity 
 ```
 select max(quantity) from walmart_sale_analysis;
 select min(quantity) from walmart_sale_analysis;
 ```
 
 # Key Business Questions & SQL Queries
+
 1. Payment Method Analysis
 ```
 SELECT 
@@ -128,9 +132,9 @@ SELECT
 FROM walmart_sale_analysis
 GROUP BY payment_method;
 ```
-   ** Identifies different payment methods used.
-   ** Counts total transactions and total quantity sold per method.
-  
+   * Identifies different payment methods used.
+   * Counts total transactions and total quantity sold per method.
+ 
 2. Highest-Rated Product Category in Each Branch
 ```
 SELECT * 
@@ -145,8 +149,8 @@ FROM (
 ) AS ranked_categories
 WHERE ranks = 1;
 ```
-   ** Finds the most popular product category per store branch based on customer ratings.
-   ** Uses window functions (RANK) to rank categories per branch.
+   * Finds the most popular product category per store branch based on customer ratings.
+   * Uses window functions (RANK) to rank categories per branch.
 
 3. Busiest Shopping Days by Branch
 ```
@@ -162,10 +166,13 @@ FROM (
 ) AS ranked_days
 WHERE ranks = 1;
 ```
-   ** Identifies the busiest day for each Walmart branch.
-   ** Helps optimize staffing and inventory management.
+   * Identifies the busiest day for each Walmart branch.
+   * Helps optimize staffing and inventory management.
 
-Potential Business Insights
+### Potential Business Insights
+
 ✔ Popular Payment Methods → Helps Walmart improve transaction processing.
+
 ✔ Top-Rated Categories → Guides marketing and promotional efforts.
+
 ✔ Busiest Shopping Days → Assists in workforce planning and inventory restocking.
